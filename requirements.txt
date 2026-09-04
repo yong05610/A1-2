@@ -1,0 +1,12 @@
+# requirements.txt
+# 이 프로젝트에서 사용하는 외부 라이브러리 목록입니다.
+# 설치 명령어: pip install -r requirements.txt
+
+# Google Gemini AI API 클라이언트
+google-generativeai>=0.7.0
+
+# HTTP 요청 (Kakao API 호출에 사용)
+requests>=2.31.0
+
+# .env 파일 로드
+python-dotenv>=1.0.0
