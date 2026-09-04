@@ -1,0 +1,36 @@
+{
+  "city": "안동",
+  "date": "2026-10-01",
+  "restaurants": [
+    {
+      "name": "아차가",
+      "category": "음식점 > 카페",
+      "address": "경북 안동시 문화광장길 40-5",
+      "url": "http://place.map.kakao.com/501790577"
+    },
+    {
+      "name": "신라국밥",
+      "category": "음식점 > 한식 > 국밥",
+      "address": "경북 안동시 서경지5길 45",
+      "url": "http://place.map.kakao.com/11120785"
+    },
+    {
+      "name": "옥야식당",
+      "category": "음식점 > 한식 > 국밥",
+      "address": "경북 안동시 중앙시장2길 46",
+      "url": "http://place.map.kakao.com/9290541"
+    },
+    {
+      "name": "땡큐커피",
+      "category": "음식점 > 카페",
+      "address": "경북 안동시 영호2길 15",
+      "url": "http://place.map.kakao.com/232339628"
+    },
+    {
+      "name": "예닮",
+      "category": "음식점 > 한식",
+      "address": "경북 안동시 서후면 귀여리길 78-28",
+      "url": "http://place.map.kakao.com/11862926"
+    }
+  ]
+}

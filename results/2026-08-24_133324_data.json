@@ -1,0 +1,44 @@
+{
+  "recommendation": {
+    "date": "2025-05-15",
+    "theme": "자연과 힐링",
+    "destinations": [
+      {
+        "rank": 1,
+        "city": "강릉",
+        "reason": "푸른 바다와 신선한 해산물의 도시"
+      },
+      {
+        "rank": 2,
+        "city": "제주",
+        "reason": "한라산과 올레길이 있는 힐링 명소"
+      },
+      {
+        "rank": 3,
+        "city": "경주",
+        "reason": "천년 역사가 살아있는 고도"
+      }
+    ]
+  },
+  "restaurants": [
+    {
+      "city": "강릉",
+      "name": "초당순두부",
+      "category": "한식",
+      "address": "강릉시 초당동 1"
+    },
+    {
+      "city": "강릉",
+      "name": "강릉커피거리",
+      "category": "카페",
+      "address": "강릉시 중앙로 2"
+    },
+    {
+      "city": "제주",
+      "name": "흑돼지거리",
+      "category": "한식",
+      "address": "제주시 연동 3"
+    }
+  ],
+  "errors": []
+}

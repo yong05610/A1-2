@@ -5,7 +5,7 @@
 .env
 
 # ── 자동 생성 폴더 ──
-results/
+
 cache/
 
 # ── Python 캐시 ──

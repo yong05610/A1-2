@@ -1,0 +1,36 @@
+{
+  "city": "진주",
+  "date": "2026-10-05",
+  "restaurants": [
+    {
+      "name": "삼가돼지국밥",
+      "category": "음식점 > 한식 > 국밥",
+      "address": "경남 진주시 옥봉길 15",
+      "url": "http://place.map.kakao.com/623869591"
+    },
+    {
+      "name": "안의갈비탕",
+      "category": "음식점 > 한식",
+      "address": "경남 진주시 비봉로 6-2",
+      "url": "http://place.map.kakao.com/8002047"
+    },
+    {
+      "name": "금산골 진주혁신도시점",
+      "category": "음식점 > 한식 > 육류,고기 > 곱창,막창",
+      "address": "경남 진주시 충의로 20-22",
+      "url": "http://place.map.kakao.com/848519947"
+    },
+    {
+      "name": "하연옥 본점",
+      "category": "음식점 > 한식 > 냉면",
+      "address": "경남 진주시 진주대로 1317-20",
+      "url": "http://place.map.kakao.com/17801000"
+    },
+    {
+      "name": "스시하루",
+      "category": "음식점 > 일식 > 초밥,롤",
+      "address": "경남 진주시 가좌안골길10번길 13",
+      "url": "http://place.map.kakao.com/11119068"
+    }
+  ]
+}

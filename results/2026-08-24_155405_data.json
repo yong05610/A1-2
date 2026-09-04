@@ -1,0 +1,42 @@
+{
+  "date": "2026-08-30",
+  "city": "강릉",
+  "destinations": [
+    "강릉",
+    "평창",
+    "제주"
+  ],
+  "restaurants": [
+    {
+      "name": "강릉꼬막집 독도네본점",
+      "category": "음식점 > 한식",
+      "address": "강원특별자치도 강릉시 옥천로 47",
+      "url": "http://place.map.kakao.com/112760187"
+    },
+    {
+      "name": "강릉초당두부티라미수",
+      "category": "음식점 > 카페 > 테마카페 > 디저트카페",
+      "address": "강원특별자치도 강릉시 난설헌로 178",
+      "url": "http://place.map.kakao.com/753121493"
+    },
+    {
+      "name": "안목해송횟집",
+      "category": "음식점 > 한식 > 해물,생선 > 회",
+      "address": "강원특별자치도 강릉시 창해로14번길 16",
+      "url": "http://place.map.kakao.com/16105747"
+    },
+    {
+      "name": "빨간삼겹살",
+      "category": "음식점 > 한식 > 육류,고기 > 삼겹살",
+      "address": "강원특별자치도 강릉시 금성로45번길 14",
+      "url": "http://place.map.kakao.com/11056626"
+    },
+    {
+      "name": "금학칼국수분식",
+      "category": "음식점 > 한식 > 국수 > 칼국수",
+      "address": "강원특별자치도 강릉시 대학길 12-6",
+      "url": "http://place.map.kakao.com/8793742"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,36 @@
+{
+  "city": "영광",
+  "date": "2026-09-12",
+  "restaurants": [
+    {
+      "name": "든든한식뷔페",
+      "category": "음식점 > 뷔페 > 한식뷔페",
+      "address": "전남광주통합특별시 영광군 영광읍 대하길3길 21-5",
+      "url": "http://place.map.kakao.com/1779508323"
+    },
+    {
+      "name": "강화식당",
+      "category": "음식점 > 한식 > 해물,생선",
+      "address": "전남광주통합특별시 영광군 법성면 굴비로 9-2",
+      "url": "http://place.map.kakao.com/21260210"
+    },
+    {
+      "name": "귀빈식당",
+      "category": "음식점 > 한식 > 한정식",
+      "address": "전남광주통합특별시 영광군 법성면 법성포로3길 6-15",
+      "url": "http://place.map.kakao.com/1052959810"
+    },
+    {
+      "name": "레드힐카페",
+      "category": "음식점 > 카페",
+      "address": "전남광주통합특별시 영광군 백수읍 해안로 917",
+      "url": "http://place.map.kakao.com/576671147"
+    },
+    {
+      "name": "어느날오후",
+      "category": "음식점 > 카페",
+      "address": "전남광주통합특별시 영광군 영광읍 물무로 204-1",
+      "url": "http://place.map.kakao.com/28664236"
+    }
+  ]
+}

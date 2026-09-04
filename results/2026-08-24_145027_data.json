@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-15",
+  "recommendation": null,
+  "restaurants": [],
+  "errors": [
+    "Gemini 추천 실패 (2회 시도): name 'get_recommendation' is not defined",
+    "맛집 검색 스킵: 추천 도시 정보 없음",
+    "최종 리포트 생성 실패: create_report() missing 1 required positional argument: 'travel_date'"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "city": "영동",
+  "date": "2026-08-29",
+  "restaurants": [
+    {
+      "name": "동해식당",
+      "category": "음식점 > 한식",
+      "address": "충북 영동군 황간면 영동황간로 1676",
+      "url": "http://place.map.kakao.com/10279816"
+    },
+    {
+      "name": "황리단길",
+      "category": "음식점 > 카페",
+      "address": "충북 영동군 황간면 영동황간로 1690",
+      "url": "http://place.map.kakao.com/1949236374"
+    },
+    {
+      "name": "추풍령할매갈비",
+      "category": "음식점 > 한식 > 육류,고기 > 갈비",
+      "address": "충북 영동군 추풍령면 추풍령로 497-1",
+      "url": "http://place.map.kakao.com/15408476"
+    },
+    {
+      "name": "이수한우전문점",
+      "category": "음식점 > 한식 > 육류,고기",
+      "address": "충북 영동군 영동읍 난계로 1108",
+      "url": "http://place.map.kakao.com/2092159843"
+    },
+    {
+      "name": "녹색평야",
+      "category": "음식점 > 카페",
+      "address": "충북 영동군 영동읍 계산로4길 5-1",
+      "url": "http://place.map.kakao.com/407076009"
+    }
+  ]
+}

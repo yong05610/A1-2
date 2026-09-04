@@ -1,0 +1,36 @@
+{
+  "city": "삼척",
+  "date": "2026-08-30",
+  "restaurants": [
+    {
+      "name": "삼척전복해물뚝배기",
+      "category": "음식점 > 한식 > 해물,생선",
+      "address": "강원특별자치도 삼척시 테마타운길 59",
+      "url": "http://place.map.kakao.com/2026801664"
+    },
+    {
+      "name": "덕성루",
+      "category": "음식점 > 중식 > 중국요리",
+      "address": "강원특별자치도 삼척시 대학로 16-2",
+      "url": "http://place.map.kakao.com/11089468"
+    },
+    {
+      "name": "삼고정문",
+      "category": "음식점 > 한식",
+      "address": "강원특별자치도 삼척시 새천년도로 673-1",
+      "url": "http://place.map.kakao.com/26035452"
+    },
+    {
+      "name": "삼척보스대게 본점",
+      "category": "음식점 > 한식 > 해물,생선 > 게,대게",
+      "address": "강원특별자치도 삼척시 테마타운길 39",
+      "url": "http://place.map.kakao.com/1823522302"
+    },
+    {
+      "name": "일미어담",
+      "category": "음식점 > 한식 > 해물,생선",
+      "address": "강원특별자치도 삼척시 테마타운길 19",
+      "url": "http://place.map.kakao.com/121611051"
+    }
+  ]
+}

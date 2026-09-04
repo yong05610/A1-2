@@ -1,0 +1,36 @@
+{
+  "city": "제주",
+  "date": "2026-08-30",
+  "restaurants": [
+    {
+      "name": "제일성심당",
+      "category": "음식점 > 간식 > 제과,베이커리",
+      "address": "제주특별자치도 서귀포시 성산읍 고성오조로 47",
+      "url": "http://place.map.kakao.com/10800528"
+    },
+    {
+      "name": "산지해장국",
+      "category": "음식점 > 한식 > 해장국",
+      "address": "제주특별자치도 제주시 임항로 34",
+      "url": "http://place.map.kakao.com/25430346"
+    },
+    {
+      "name": "보룡제과",
+      "category": "음식점 > 간식 > 제과,베이커리",
+      "address": "제주특별자치도 서귀포시 성산읍 고성오조로 48-1",
+      "url": "http://place.map.kakao.com/10375136"
+    },
+    {
+      "name": "바당길",
+      "category": "음식점 > 한식 > 국수 > 칼국수",
+      "address": "제주특별자치도 제주시 한림읍 한림서길 18",
+      "url": "http://place.map.kakao.com/500457527"
+    },
+    {
+      "name": "커피템플",
+      "category": "음식점 > 카페",
+      "address": "제주특별자치도 제주시 영평길 269",
+      "url": "http://place.map.kakao.com/99092488"
+    }
+  ]
+}
