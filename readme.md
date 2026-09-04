@@ -10,7 +10,7 @@
 - **이유**:
   - 기획과 코딩을 분리해 **설계 단계에서 방향을 확정**한 뒤 개발에 착수 → 재작업 최소화
   - 코딩 AI(Sonnet)는 **모듈 단위 구현·디버깅**에 활용, 실행 중 추천 로직은 **Gemini**가 담당하여 역할을 명확히 구분
-
+---
 ## 3. 주요 의사결정 기록 (STEP별)
 | 단계 | 결정 내용 | 이유 |
 |------|----------|------|
@@ -19,6 +19,8 @@
 | llm.py | 추천 결과를 **dict로 반환** | 날씨·행사 등 부가정보를 함께 전달하기 위함 |
 | cache | API 응답 캐싱 도입(보너스) | 동일 요청 시 API 재호출 방지·속도 개선 |
 | main.py | 리포트 생성/저장/출력 단계 분리 | 생성(`create_report`)과 저장(`save_report`) 책임 분리 |
+
+---
 
 ## 4. 단계별 개발 과정
 
@@ -43,6 +45,7 @@
 | 성공 기준 | 오류 없이 전체 흐름 완주 + 리포트 파일 생성 |
 | 제약 | Kakao API는 선택 도시 1곳만 검색(호출 절약) |
 
+---
 ### STEP 2. 데이터 스키마 
 
 #### 2-1. LLM 반환 JSON 필수 키
@@ -84,9 +87,10 @@ results/
 ```
   <img width="324" height="330" alt="image" src="https://github.com/user-attachments/assets/3ef9673a-1dc9-4076-83ac-57062275d515" />
 
-  <img width="900" height="747" alt="image" src="https://github.com/user-attachments/assets/efe11261-56fa-4715-9176-f2fcf01d7e88" />
+  <img width="362" height="590" alt="image" src="https://github.com/user-attachments/assets/2e76ae3d-5a25-4c5c-b4f8-0b4cc1100bdb" />
 
- <img width="987" height="779" alt="image" src="https://github.com/user-attachments/assets/32119df4-a281-4e9d-b6d7-f6da76b06f5e" />
+
+  <img width="900" height="747" alt="image" src="https://github.com/user-attachments/assets/efe11261-56fa-4715-9176-f2fcf01d7e88" />
 
 
 ### STEP 3. 프로젝트 뼈대 (config)
@@ -95,32 +99,72 @@ results/
 - **결과**: `load_dotenv()`로 `.env`의 키를 안전하게 불러오는 구조 완성
 - **트러블슈팅**: 없음
 
-#### 1.1 API 설계 (지적 #3, #10, #12 반영)
+#### 3.1 API 설계 (지적 #3, #10, #12 반영)
 
-##### 3.1-1. GET/POST 사용 구분 (지적 #10)
+##### 3.1-1. GET/POST 사용 구분 
 | API | 메서드 | 이유 | 엔드포인트 |
 |-----|--------|------|-----------|
 | Kakao Local | **GET** | 검색 조회(멱등·부작용 없음) | `https://dapi.kakao.com/v2/local/search/keyword.json` |
 | Gemini | **POST** | 프롬프트 본문 전송 필요 | Gemini SDK 내부 호출 |
 
-##### 3.1-2. 도시 변수 전달 흐름 (지적 #3)
+##### 3.1-2. 도시 변수 전달 흐름 
 - `recommended_city` → 사용자 선택 → `places.search_restaurants(city)`로 전달
 - **API 실패 시**: 맛집 데이터 없이 **리포트 계속 생성**("맛집 정보 없음" 표기)
 
-##### 3.1-3. 인증 오류(401/403) 디버깅 절차 (지적 #12)
+##### 3.1-3. 인증 오류(401/403) 디버깅 절차 
 | 코드 | 원인 | 확인 항목 |
 |------|------|-----------|
 | 401 | 키 오류 | `.env` API 키 값 확인 |
 | 403 | 권한/도메인 | Kakao 앱 도메인·권한 설정, 헤더 `Authorization: KakaoAK {key}` 확인 |
 
+#### 3.1-4. 보안: API 키 관리
+- `load_dotenv()`로 `.env`에서 키 로드 → **코드에 하드코딩 없음**
+- **검수 절차**: 커밋 전 `.env`가 `.gitignore`에 포함됐는지 확인, 코드·리포트·출력물에 키 미포함 확인 ✅
+- **환경변수 사용 이유**: ①보안(유출 방지) ②운영(환경별 키 교체 용이) ③버전관리 회피(민감정보 커밋 방지)
+
+---
+#### 3.1-5. 지도 API 추상화 설계 
+- 맛집 검색을 **플러그인 형태**로 추상화 → 다른 지도 API로 교체 용이
+```python
+# 추상 인터페이스
+def search_restaurants(city: str) -> list[dict]:
+    """입력: 도시명 / 출력: [{name, address, category}, ...]"""
+```
+- **교체 절차**: `places.py`의 함수 내부 구현만 교체(입력·출력 포맷 동일 유지) → 나머지 코드 변경 불필요
+
+---
+#### 3.1-6. 오류 처리 & errors 누적 정책 (지적 #9, #15 반영)
+- 모든 외부 API 호출에 `try-except` 적용 → 실패 시 `errors` 리스트에 누적
+```python
+errors = []
+try:
+    ...
+except Exception as e:
+    errors.append(f"[맛집검색 실패] {e}")
+```
+- **누적된 errors는 리포트 하단 "⚠️ 처리 로그" 섹션**에 포함 저장
+- **검색 0건 처리 (지적 #15)**: 맛집 0건이어도 **중단 없이** "맛집 정보 없음" 표기 후 리포트 계속 생성
+
 ---
 
+#### 3.2. 캐싱 정책 (지적 #16 반영)
+| 항목 | 내용 |
+|------|------|
+| 위치 | 로컬 파일(`cache/`) |
+| 캐시 키 | `{도시명}_{날짜}` |
+| 만료 정책 | 같은 날짜 요청은 재사용 (당일 캐시 유효) |
+| 함수 | `save_to_cache()` / `get_from_cache()` |
+
+---
 
 ### STEP 4. llm.py (여행지 추천)
 - **프롬프트 요약**: Gemini로 날짜 기반 여행지 복수 추천 + 날씨/행사 정보 포함
 - **결과**: `recommend_destinations()`, `create_report()` 구현
 - **트러블슈팅**: 초기엔 문자열 반환 → 부가정보 전달 위해 **dict 반환으로 수정**
-
+     **llm.py dict 반환의 구체적 이점**
+       - 문자열 대비 **키로 즉시 접근**(`data["weather"]`) → 파싱 불필요
+       - 다음 단계(맛집 검색)에 `recommended_city` 바로 전달 가능
+---
 ### STEP 5. places.py (맛집 검색)
 - **프롬프트 요약**: Kakao Local API로 선택 도시의 맛집 검색
 - **결과**: `search_restaurants()` 구현
@@ -130,16 +174,35 @@ results/
 - **프롬프트 요약**: API 응답을 저장·재사용하는 캐시 로직 요청
 - **결과**: `save_to_cache()`, `get_from_cache()` 구현
 - **트러블슈팅**: import 중복(`load_cache`/`get_from_cache`) 정리
-
+---
 ### STEP 7. report.py (리포트 저장)
 - **프롬프트 요약**: Markdown 리포트를 파일로 저장
 - **결과**: `save_report()` 구현
 - **트러블슈팅**: 없음
-
+---
 ### STEP 8. main.py (전체 흐름 통합)
 - **프롬프트 요약**: 날짜 입력 → 추천 → 선택 → 맛집 검색 → 리포트 생성/저장/출력 통합
 - **결과**: 도시 선택 UI(번호 입력·재입력), JSON+Markdown 저장, 화면 출력 완성
 - **트러블슈팅**: `create_report` import 누락 / `save_report`와 `create_report` 혼동 해결
+
+#### 8.1 CLI 사용법
+```bash
+python main.py --date 2025-06-15
+```
+| 옵션 | 필수 | 형식 | 설명 | 예시 |
+|------|------|------|------|------|
+| `--date` | 필수 | `YYYY-MM-DD` | 여행 날짜 | `2025-06-15` |
+
+- **허용 날짜 형식**: `YYYY-MM-DD` (예: `2025-06-15`), 그 외 형식 입력 시 재입력 요청
+- **사용법 출력 예시**:
+```
+📌[CLI 실행 화면 덤프 — python main.py --date 2025-06-15 실행 결과]
+```
+ <img width="987" height="779" alt="image" src="https://github.com/user-attachments/assets/32119df4-a281-4e9d-b6d7-f6da76b06f5e" />
+
+---
+
+
 
 ## 5. 트러블슈팅 모음
 
@@ -150,6 +213,7 @@ results/
 | `NameError: create_report` | import 누락 | `from llm import ..., create_report` 추가 |
 | cache 중복 import | 같은 모듈 2줄로 import | 한 줄로 통합 정리 |
 
+---
 ## 6. 회고
 
 - **잘된 점**: 설계를 먼저 확정하고 개발해 흐름이 명확했다. 보너스(캐싱·복수 추천)까지 구현 완료.
